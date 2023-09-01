@@ -23,9 +23,4 @@ mod test_p_vec {
         assert_eq!(p_vec![i * 2; for i in 0..5], [0, 2, 4, 6, 8]);
         assert_eq!(p_vec![i * i; for i in 0..5], [0, 1, 4, 9, 16]);
     }
-
-    #[test]
-    fn test_p_vec_with_two_layers_for_loop() {
-        // TODO
-    }
 }
