@@ -1,5 +1,10 @@
 pub macro p_cond {
     () => {},
+    (not $ee:expr) => {
+        {
+            !$ee
+        }
+    },
     ($true_value:expr; if $cond:expr; else $false_value:expr) => {
         {
             if $cond {
@@ -22,5 +27,9 @@ mod test_p_cond {
         assert_eq!(10, p_cond!(2 * 5; if 10 >= 10; else 20));
         assert_eq!(10, p_cond!(2 * 5; if 10 > 0; else 20));
         assert_eq!(10, p_cond!(2 * 5; if 10 > 0; else 20));
+
+        assert!(p_cond!(not false));
+        assert!(!p_cond!(not true));
+        assert!(!p_cond!(not 1 != 2));
     }
 }
